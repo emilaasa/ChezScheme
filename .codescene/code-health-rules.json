@@ -4,6 +4,7 @@
     {
       "matching_content_path": "**/*",
       "matching_content_path_doc": "Specify a glob pattern relative to this repo root. **/* means all code, **/*.js means just JavaScript, test/** means all code in a top-level test folder.",
+      "threshholds": [{"name": "WOLOLO"}],
       "rules": [
         {
           "name": "Low Cohesion",
