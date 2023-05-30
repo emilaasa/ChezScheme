@@ -367,6 +367,411 @@ void S_get_more_room(void) {
 
   XP(tc) = S_get_more_room_help(tc, ap, type, size);
 }
+ptr S_get_more_room_help1(ptr tc, uptr ap, uptr type, uptr size) {
+  ptr x; uptr eap, real_eap;
+
+  eap = (uptr)EAP(tc);
+  real_eap = (uptr)REAL_EAP(tc);
+
+  tc_mutex_acquire()
+
+  S_scan_dirty((ptr **)eap, (ptr **)real_eap);
+  eap = real_eap;
+
+  if (eap - ap >= size) {
+    x = TYPE(ap, type);
+    ap += size;
+    if (eap - ap > alloc_waste_maximum) {
+      AP(tc) = (ptr)ap;
+      EAP(tc) = (ptr)eap;
+    } else {
+      uptr bytes = eap - ap;
+      S_G.bytes_of_space[0][space_new] -= bytes;
+      S_G.bytes_of_generation[0] -= bytes;
+      S_reset_allocation_pointer(tc);
+    }
+  } else if (eap - ap > alloc_waste_maximum) {
+    AP(tc) = (ptr)ap;
+    EAP(tc) = (ptr)eap;
+    find_room(space_new, 0, type, size, x);
+  } else {
+    uptr bytes = eap - ap;
+    S_G.bytes_of_space[0][space_new] -= bytes;
+    S_G.bytes_of_generation[0] -= bytes;
+    S_reset_allocation_pointer(tc);
+    ap = (uptr)AP(tc);
+    if (size + alloc_waste_maximum <= (uptr)EAP(tc) - ap) {
+      x = TYPE(ap, type);
+      AP(tc) = (ptr)(ap + size);
+    } else {
+      find_room(space_new, 0, type, size, x);
+    }
+  }
+
+  tc_mutex_release()
+
+  return x;
+}
+ptr S_get_more_room_help2(ptr tc, uptr ap, uptr type, uptr size) {
+  ptr x; uptr eap, real_eap;
+
+  eap = (uptr)EAP(tc);
+  real_eap = (uptr)REAL_EAP(tc);
+
+  tc_mutex_acquire()
+
+  S_scan_dirty((ptr **)eap, (ptr **)real_eap);
+  eap = real_eap;
+
+  if (eap - ap >= size) {
+    x = TYPE(ap, type);
+    ap += size;
+    if (eap - ap > alloc_waste_maximum) {
+      AP(tc) = (ptr)ap;
+      EAP(tc) = (ptr)eap;
+    } else {
+      uptr bytes = eap - ap;
+      S_G.bytes_of_space[0][space_new] -= bytes;
+      S_G.bytes_of_generation[0] -= bytes;
+      S_reset_allocation_pointer(tc);
+    }
+  } else if (eap - ap > alloc_waste_maximum) {
+    AP(tc) = (ptr)ap;
+    EAP(tc) = (ptr)eap;
+    find_room(space_new, 0, type, size, x);
+  } else {
+    uptr bytes = eap - ap;
+    S_G.bytes_of_space[0][space_new] -= bytes;
+    S_G.bytes_of_generation[0] -= bytes;
+    S_reset_allocation_pointer(tc);
+    ap = (uptr)AP(tc);
+    if (size + alloc_waste_maximum <= (uptr)EAP(tc) - ap) {
+      x = TYPE(ap, type);
+      AP(tc) = (ptr)(ap + size);
+    } else {
+      find_room(space_new, 0, type, size, x);
+    }
+  }
+
+  tc_mutex_release()
+
+  return x;
+}
+ptr S_get_more_room_help3(ptr tc, uptr ap, uptr type, uptr size) {
+  ptr x; uptr eap, real_eap;
+
+  eap = (uptr)EAP(tc);
+  real_eap = (uptr)REAL_EAP(tc);
+
+  tc_mutex_acquire()
+
+  S_scan_dirty((ptr **)eap, (ptr **)real_eap);
+  eap = real_eap;
+
+  if (eap - ap >= size) {
+    x = TYPE(ap, type);
+    ap += size;
+    if (eap - ap > alloc_waste_maximum) {
+      AP(tc) = (ptr)ap;
+      EAP(tc) = (ptr)eap;
+    } else {
+      uptr bytes = eap - ap;
+      S_G.bytes_of_space[0][space_new] -= bytes;
+      S_G.bytes_of_generation[0] -= bytes;
+      S_reset_allocation_pointer(tc);
+    }
+  } else if (eap - ap > alloc_waste_maximum) {
+    AP(tc) = (ptr)ap;
+    EAP(tc) = (ptr)eap;
+    find_room(space_new, 0, type, size, x);
+  } else {
+    uptr bytes = eap - ap;
+    S_G.bytes_of_space[0][space_new] -= bytes;
+    S_G.bytes_of_generation[0] -= bytes;
+    S_reset_allocation_pointer(tc);
+    ap = (uptr)AP(tc);
+    if (size + alloc_waste_maximum <= (uptr)EAP(tc) - ap) {
+      x = TYPE(ap, type);
+      AP(tc) = (ptr)(ap + size);
+    } else {
+      find_room(space_new, 0, type, size, x);
+    }
+  }
+
+  tc_mutex_release()
+
+  return x;
+}
+ptr S_get_more_room_help4(ptr tc, uptr ap, uptr type, uptr size) {
+  ptr x; uptr eap, real_eap;
+
+  eap = (uptr)EAP(tc);
+  real_eap = (uptr)REAL_EAP(tc);
+
+  tc_mutex_acquire()
+
+  S_scan_dirty((ptr **)eap, (ptr **)real_eap);
+  eap = real_eap;
+
+  if (eap - ap >= size) {
+    x = TYPE(ap, type);
+    ap += size;
+    if (eap - ap > alloc_waste_maximum) {
+      AP(tc) = (ptr)ap;
+      EAP(tc) = (ptr)eap;
+    } else {
+      uptr bytes = eap - ap;
+      S_G.bytes_of_space[0][space_new] -= bytes;
+      S_G.bytes_of_generation[0] -= bytes;
+      S_reset_allocation_pointer(tc);
+    }
+  } else if (eap - ap > alloc_waste_maximum) {
+    AP(tc) = (ptr)ap;
+    EAP(tc) = (ptr)eap;
+    find_room(space_new, 0, type, size, x);
+  } else {
+    uptr bytes = eap - ap;
+    S_G.bytes_of_space[0][space_new] -= bytes;
+    S_G.bytes_of_generation[0] -= bytes;
+    S_reset_allocation_pointer(tc);
+    ap = (uptr)AP(tc);
+    if (size + alloc_waste_maximum <= (uptr)EAP(tc) - ap) {
+      x = TYPE(ap, type);
+      AP(tc) = (ptr)(ap + size);
+    } else {
+      find_room(space_new, 0, type, size, x);
+    }
+  }
+
+  tc_mutex_release()
+
+  return x;
+}
+ptr S_get_more_room_help5(ptr tc, uptr ap, uptr type, uptr size) {
+  ptr x; uptr eap, real_eap;
+
+  eap = (uptr)EAP(tc);
+  real_eap = (uptr)REAL_EAP(tc);
+
+  tc_mutex_acquire()
+
+  S_scan_dirty((ptr **)eap, (ptr **)real_eap);
+  eap = real_eap;
+
+  if (eap - ap >= size) {
+    x = TYPE(ap, type);
+    ap += size;
+    if (eap - ap > alloc_waste_maximum) {
+      AP(tc) = (ptr)ap;
+      EAP(tc) = (ptr)eap;
+    } else {
+      uptr bytes = eap - ap;
+      S_G.bytes_of_space[0][space_new] -= bytes;
+      S_G.bytes_of_generation[0] -= bytes;
+      S_reset_allocation_pointer(tc);
+    }
+  } else if (eap - ap > alloc_waste_maximum) {
+    AP(tc) = (ptr)ap;
+    EAP(tc) = (ptr)eap;
+    find_room(space_new, 0, type, size, x);
+  } else {
+    uptr bytes = eap - ap;
+    S_G.bytes_of_space[0][space_new] -= bytes;
+    S_G.bytes_of_generation[0] -= bytes;
+    S_reset_allocation_pointer(tc);
+    ap = (uptr)AP(tc);
+    if (size + alloc_waste_maximum <= (uptr)EAP(tc) - ap) {
+      x = TYPE(ap, type);
+      AP(tc) = (ptr)(ap + size);
+    } else {
+      find_room(space_new, 0, type, size, x);
+    }
+  }
+
+  tc_mutex_release()
+
+  return x;
+}
+ptr S_get_more_room_help6(ptr tc, uptr ap, uptr type, uptr size) {
+  ptr x; uptr eap, real_eap;
+
+  eap = (uptr)EAP(tc);
+  real_eap = (uptr)REAL_EAP(tc);
+
+  tc_mutex_acquire()
+
+  S_scan_dirty((ptr **)eap, (ptr **)real_eap);
+  eap = real_eap;
+
+  if (eap - ap >= size) {
+    x = TYPE(ap, type);
+    ap += size;
+    if (eap - ap > alloc_waste_maximum) {
+      AP(tc) = (ptr)ap;
+      EAP(tc) = (ptr)eap;
+    } else {
+      uptr bytes = eap - ap;
+      S_G.bytes_of_space[0][space_new] -= bytes;
+      S_G.bytes_of_generation[0] -= bytes;
+      S_reset_allocation_pointer(tc);
+    }
+  } else if (eap - ap > alloc_waste_maximum) {
+    AP(tc) = (ptr)ap;
+    EAP(tc) = (ptr)eap;
+    find_room(space_new, 0, type, size, x);
+  } else {
+    uptr bytes = eap - ap;
+    S_G.bytes_of_space[0][space_new] -= bytes;
+    S_G.bytes_of_generation[0] -= bytes;
+    S_reset_allocation_pointer(tc);
+    ap = (uptr)AP(tc);
+    if (size + alloc_waste_maximum <= (uptr)EAP(tc) - ap) {
+      x = TYPE(ap, type);
+      AP(tc) = (ptr)(ap + size);
+    } else {
+      find_room(space_new, 0, type, size, x);
+    }
+  }
+
+  tc_mutex_release()
+
+  return x;
+}
+ptr S_get_more_room_help7(ptr tc, uptr ap, uptr type, uptr size) {
+  ptr x; uptr eap, real_eap;
+
+  eap = (uptr)EAP(tc);
+  real_eap = (uptr)REAL_EAP(tc);
+
+  tc_mutex_acquire()
+
+  S_scan_dirty((ptr **)eap, (ptr **)real_eap);
+  eap = real_eap;
+
+  if (eap - ap >= size) {
+    x = TYPE(ap, type);
+    ap += size;
+    if (eap - ap > alloc_waste_maximum) {
+      AP(tc) = (ptr)ap;
+      EAP(tc) = (ptr)eap;
+    } else {
+      uptr bytes = eap - ap;
+      S_G.bytes_of_space[0][space_new] -= bytes;
+      S_G.bytes_of_generation[0] -= bytes;
+      S_reset_allocation_pointer(tc);
+    }
+  } else if (eap - ap > alloc_waste_maximum) {
+    AP(tc) = (ptr)ap;
+    EAP(tc) = (ptr)eap;
+    find_room(space_new, 0, type, size, x);
+  } else {
+    uptr bytes = eap - ap;
+    S_G.bytes_of_space[0][space_new] -= bytes;
+    S_G.bytes_of_generation[0] -= bytes;
+    S_reset_allocation_pointer(tc);
+    ap = (uptr)AP(tc);
+    if (size + alloc_waste_maximum <= (uptr)EAP(tc) - ap) {
+      x = TYPE(ap, type);
+      AP(tc) = (ptr)(ap + size);
+    } else {
+      find_room(space_new, 0, type, size, x);
+    }
+  }
+
+  tc_mutex_release()
+
+  return x;
+}
+ptr S_get_more_room_help(ptr tc, uptr ap, uptr type, uptr size) {
+  ptr x; uptr eap, real_eap;
+
+  eap = (uptr)EAP(tc);
+  real_eap = (uptr)REAL_EAP(tc);
+
+  tc_mutex_acquire()
+
+  S_scan_dirty((ptr **)eap, (ptr **)real_eap);
+  eap = real_eap;
+
+  if (eap - ap >= size) {
+    x = TYPE(ap, type);
+    ap += size;
+    if (eap - ap > alloc_waste_maximum) {
+      AP(tc) = (ptr)ap;
+      EAP(tc) = (ptr)eap;
+    } else {
+      uptr bytes = eap - ap;
+      S_G.bytes_of_space[0][space_new] -= bytes;
+      S_G.bytes_of_generation[0] -= bytes;
+      S_reset_allocation_pointer(tc);
+    }
+  } else if (eap - ap > alloc_waste_maximum) {
+    AP(tc) = (ptr)ap;
+    EAP(tc) = (ptr)eap;
+    find_room(space_new, 0, type, size, x);
+  } else {
+    uptr bytes = eap - ap;
+    S_G.bytes_of_space[0][space_new] -= bytes;
+    S_G.bytes_of_generation[0] -= bytes;
+    S_reset_allocation_pointer(tc);
+    ap = (uptr)AP(tc);
+    if (size + alloc_waste_maximum <= (uptr)EAP(tc) - ap) {
+      x = TYPE(ap, type);
+      AP(tc) = (ptr)(ap + size);
+    } else {
+      find_room(space_new, 0, type, size, x);
+    }
+  }
+
+  tc_mutex_release()
+
+  return x;
+}
+ptr S_get_more_room_help(ptr tc, uptr ap, uptr type, uptr size) {
+  ptr x; uptr eap, real_eap;
+
+  eap = (uptr)EAP(tc);
+  real_eap = (uptr)REAL_EAP(tc);
+
+  tc_mutex_acquire()
+
+  S_scan_dirty((ptr **)eap, (ptr **)real_eap);
+  eap = real_eap;
+
+  if (eap - ap >= size) {
+    x = TYPE(ap, type);
+    ap += size;
+    if (eap - ap > alloc_waste_maximum) {
+      AP(tc) = (ptr)ap;
+      EAP(tc) = (ptr)eap;
+    } else {
+      uptr bytes = eap - ap;
+      S_G.bytes_of_space[0][space_new] -= bytes;
+      S_G.bytes_of_generation[0] -= bytes;
+      S_reset_allocation_pointer(tc);
+    }
+  } else if (eap - ap > alloc_waste_maximum) {
+    AP(tc) = (ptr)ap;
+    EAP(tc) = (ptr)eap;
+    find_room(space_new, 0, type, size, x);
+  } else {
+    uptr bytes = eap - ap;
+    S_G.bytes_of_space[0][space_new] -= bytes;
+    S_G.bytes_of_generation[0] -= bytes;
+    S_reset_allocation_pointer(tc);
+    ap = (uptr)AP(tc);
+    if (size + alloc_waste_maximum <= (uptr)EAP(tc) - ap) {
+      x = TYPE(ap, type);
+      AP(tc) = (ptr)(ap + size);
+    } else {
+      find_room(space_new, 0, type, size, x);
+    }
+  }
+
+  tc_mutex_release()
+
+  return x;
+}
 
 ptr S_get_more_room_help(ptr tc, uptr ap, uptr type, uptr size) {
   ptr x; uptr eap, real_eap;
