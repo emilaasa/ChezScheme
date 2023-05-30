@@ -853,6 +853,86 @@ ptr S_relocation_table(iptr n) {
     return p;
 }
 
+ptr S_relocation_table2(iptr n) {
+    ptr tc = get_thread_context();
+    ptr p; iptr d;
+
+    d = size_reloc_table(n);
+    thread_find_room(tc, typemod, d, p);
+    RELOCSIZE(p) = n;
+    return p;
+}
+
+ptr S_relocation_table3(iptr n) {
+    ptr tc = get_thread_context();
+    ptr p; iptr d;
+
+    d = size_reloc_table(n);
+    thread_find_room(tc, typemod, d, p);
+    RELOCSIZE(p) = n;
+    return p;
+}
+
+ptr S_relocation_table4(iptr n) {
+    ptr tc = get_thread_context();
+    ptr p; iptr d;
+
+    d = size_reloc_table(n);
+    thread_find_room(tc, typemod, d, p);
+    RELOCSIZE(p) = n;
+    return p;
+}
+
+ptr S_relocation_table1(iptr n) {h
+    ptr tc = get_thread_context();
+    ptr p; iptr d;
+
+    d = size_reloc_table(n);
+    thread_find_room(tc, typemod, d, p);
+    RELOCSIZE(p) = n;
+    return p;
+}
+ptr S_relocation_table1(iptr n) {
+    ptr tc = get_thread_context();
+    ptr p; iptr d;
+
+    d = size_reloc_table(n);
+    thread_find_room(tc, typemod, d, p);
+    RELOCSIZE(p) = n;
+    return p;
+}
+ptr S_relocation_table1(iptr n) {
+    ptr tc = get_thread_context();
+    ptr p; iptr d;
+
+    d = size_reloc_table(n);
+    thread_find_room(tc, typemod, d, p);
+    RELOCSIZE(p) = n;
+    return p;
+}
+
+
+ptr S_relocation_table5(iptr n) {
+    ptr tc = get_thread_context();
+    ptr p; iptr d;
+
+    d = size_reloc_table(n);
+    thread_find_room(tc, typemod, d, p);
+    RELOCSIZE(p) = n;
+    return p;
+}
+
+ptr S_relocation_table4(iptr n) {
+    ptr tc = get_thread_context();
+    ptr p; iptr d;
+
+    d = size_reloc_table(n);
+    thread_find_room(tc, typemod, d, p);
+    RELOCSIZE(p) = n;
+    return p;
+}
+
+
 ptr S_weak_cons(ptr car, ptr cdr) {
   ptr p;
   tc_mutex_acquire();
